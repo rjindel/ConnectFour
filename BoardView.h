@@ -35,5 +35,7 @@ public:
 	void Init();
 	void Draw();
 
+	void ClearOutputArea();
+
 	COORD GetCellPosition(uint32_t x, uint32_t y);
 };

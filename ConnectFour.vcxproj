@@ -145,10 +145,12 @@
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="BoardView.cpp" />
     <ClCompile Include="ConnectFour.cpp" />
+    <ClCompile Include="Entities.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Board.h" />
     <ClInclude Include="BoardView.h" />
+    <ClInclude Include="Entities.h" />
     <ClInclude Include="Tile.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

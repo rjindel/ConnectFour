@@ -43,6 +43,23 @@ void Board::SetTile(uint32_t x, uint32_t y, const Tile& tile)
 	boardTiles[y * boardWidth + x] = tile;
 }
 
+bool Board::HasUnnocupiedTile() const
+{
+	for (uint32_t x = 0; x < boardWidth; ++x)
+	{
+		for (uint32_t y = 0; y < boardHeight; ++y)
+		{
+			Tile currentTile = GetTile(x, y);
+			if (currentTile.type == TileType::UNNOCCUPIED)
+			{
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
 bool Board::CheckWin()
 {
 	for (uint32_t x = 0; x < boardWidth; ++x)
@@ -51,6 +68,9 @@ bool Board::CheckWin()
 		{
 			if (CheckTile(x, y))
 			{
+				Tile currentTile = GetTile(x, y);
+				winningPlayer = currentTile.value;
+
 				return true;
 			}
 		}

@@ -122,3 +122,23 @@ char BoardView::GetTileCharacter(const Tile tile) const
 	
 	return ' ';
 }
+
+void BoardView::ClearOutputArea()
+{
+	CONSOLE_SCREEN_BUFFER_INFO bufferInfo = { 0 };
+	if (!GetConsoleScreenBufferInfo(consoleHandle, &bufferInfo))
+	{
+		printf("Error: Unknown error getting console");
+		return;
+	}
+
+	const int linesToClear = 4;
+	int screenSize = bufferInfo.dwSize.X * linesToClear;
+
+	COORD outputPosition = { 0, 0 };
+	outputPosition.Y += boardPosition.Y + boardHeight;
+
+	DWORD numCharsWritten = 0;
+	FillConsoleOutputCharacter(consoleHandle, ' ', screenSize, outputPosition, &numCharsWritten);
+
+}
